@@ -10,7 +10,6 @@ import com.example.demo.Repository.StudentRepo;
 
 @Service
 public class StudentService 
-
 {
 	@Autowired(required=true)
 	StudentRepo stRepo;
@@ -19,8 +18,13 @@ public class StudentService
 	{
 		return stRepo.save(e);
 	}
-	public List<StudentDemo> gatDetails(){
+	public List<StudentDemo> getDetails(){
 		return stRepo.findAll();
 	}
-
+	public StudentDemo updateDetails(StudentDemo e) {
+		return stRepo.saveAndFlush(e);
+	}
+	public void deleteDetails(int sid) {
+		stRepo.deleteById(sid);
+	}
 } 
